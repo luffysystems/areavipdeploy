@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área VIP | Sua Make, Seu Estilo</title>
+    <style>
+        /* ==========================================
+           CSS INTEGRADO - IDENTIDADE ÁREA VIP
+           ========================================== */
+        :root {
+            --primary-pink: #d946ef;
+            --light-pink: #f472b6;
+            --dark-pink: #a21caf;
+            --bg-dark-gradient: linear-gradient(135deg, #111111 0%, #2d142c 100%);
+            --whatsapp-green: #16a34a;
+            --whatsapp-green-hover: #15803d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .serif-title {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+
+        /* Top Barra */
+        .top-bar {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 8px 16px;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-flex {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #000000;
+            border: 2px solid var(--primary-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text p {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--primary-pink);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .cart-btn {
+            background: none;
+            border: none;
+            position: relative;
+            cursor: pointer;
+            padding: 8px;
+            font-size: 24px;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--dark-pink);
+            color: #ffffff;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Banner Hero */
+        .hero {
+            background: var(--bg-dark-gradient);
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            background-color: rgba(217, 70, 239, 0.2);
+            border: 1px solid rgba(217, 70, 239, 0.4);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: var(--light-pink);
+            display: inline-block;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            margin-top: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h2 span {
+            color: var(--light-pink);
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: #d1d5db;
+            max-width: 450px;
+            margin: 16px auto 0 auto;
+            line-height: 1.5;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 24px;
+            background-color: var(--primary-pink);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 32px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--dark-pink);
+        }
+
+        /* Grid de Produtos */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 16px;
+        }
+
+        .section-title {
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 12px;
+        }
+
+        .section-title h3 {
+            font-size: 22px;
+        }
+
+        .section-title p {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--primary-pink);
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .products-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        }
+        @media (min-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #f3f4f6;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .img-container {
+            position: relative;
+            padding-top: 100%;
+            background-color: #f3f4f6;
+        }
+
+        .img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .price-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 20px;
+        }
+
+        .product-info {
+            padding: 12px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-info h4 {
+            font-size: 14px;
+            color: #111111;
+        }
+
+        .product-info p {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 4px;
+            line-height: 1.3;
+            min-height: 28px;
+        }
+
+        .add-btn {
+            width: 100%;
+            background-color: #111111;
+            color: #ffffff;
+            border: none;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin-top: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .add-btn:hover {
+            background-color: var(--primary-pink);
+        }
+
+        /* Sidebar do Carrinho */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 100;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s ease;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 99;
+            display: none;
+        }
+
+        .cart-overlay.open {
+            display: block;
+        }
+
+        .cart-header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-size: 16px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            padding: 16px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f3f4f6;
+            padding: 12px 0;
+        }
+
+        .cart-item-details h5 {
+            font-size: 13px;
+        }
+
+        .cart-item-details p {
+            font-size: 12px;
+            color: var(--primary-pink);
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qty-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid #d1d5db;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .qty-btn:hover { background-color: #f3f4f6; }
+
+        .cart-footer {
+            background-color: #f9fafb;
+            padding: 16px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .footer-note {
+            font-size: 11px;
+            color: #6b7280;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: var(--whatsapp-green-hover);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b0b0b;
+            color: #9ca3af;
+            text-align: center;
+            padding: 32px 16px;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        footer .brand {
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        ✨ Sua make, seu estilo • Pedidos via WhatsApp ✨
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-flex">
+                <div class="logo-circle serif-title">AV</div>
+                <div class="logo-text">
+                    <h1 class="serif-title">ÁREA VIP</h1>
+                    <p>Sua Make, Seu Estilo</p>
+                </div>
+            </div>
+            <button onclick="toggleCart(true)" class="cart-btn">
+                🛍️
+                <span id="cart-count" class="cart-badge" style="display: none;">0</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <span class="hero-tag">@area._vip_26</span>
+        <h2 class="serif-title">SUA MAKE<br><span>SEU ESTILO</span></h2>
+        <p>Maquiagens selecionadas para você. Monte seu pedido e envie diretamente pelo WhatsApp de forma simples e rápida.</p>
+        <a href="#catalogo" class="hero-btn">Conferir Produtos</a>
+    </section>
+
+    <main id="catalogo">
+        <div class="section-title">
+            <h3 class="serif-title">NOVIDADES</h3>
+            <p>Categoria: Maquiagens</p>
+        </div>
+
+        <div id="product-grid" class="products-grid">
+        </div>
+    </main>
+
+    <footer>
+        <p class="brand serif-title">ÁREA VIP</p>
+        <p>Ao navegar por este site você aceita o uso de cookies para agilizar a sua experiência de compra.</p>
+        <p style="margin-top: 12px; color: #4b5563;">&copy; 2026 Área VIP. Redirecionamento via WhatsApp.</p>
+    </footer>
+
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart(false)"></div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2 class="serif-title">🛍️ Seu Pedido VIP</h2>
+            <button class="close-cart" onclick="toggleCart(false)">&times;</button>
+        </div>
+        <div id="cart-items-container" class="cart-body">
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total Estimado</span>
+                <span id="cart-total-price">R$ 0,00</span>
+            </div>
+            <p class="footer-note">ℹ️ O pagamento não é feito aqui. Seu pedido será enviado em formato de texto para o nosso WhatsApp comercial.</p>
+            <button onclick="sendWhatsAppOrder()" class="whatsapp-btn">
+                💬 Enviar Pedido no WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const WHATSAPP_NUMBER = "558486032459"; 
+
+        const products = [
+            { id: 1, name: "Gloss com Chaveiro VIP", price: 20.00, desc: "Femme Paris, Yoyomaquiamor, Bobbi Rara", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786937639251_images_6.jpg" },
+            { id: 2, name: "Gloss com Chaveiro Simples", price: 15.00, desc: "Bobbi Rara (caixa), Labranche (unidade)", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786937262286_images_7.jpg" },
+            { id: 3, name: "Batons Variados", price: 10.00, desc: "Líquido Max Love / Bala Mia Make", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786941297605_images_9.jpg" },
+            { id: 4, name: "Lip Tint", price: 10.00, desc: "Marca: Max Love", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786941024830_images_8.jpg" },
+            { id: 5, name: "Corretivo Facial", price: 10.00, desc: "Marca: Pink21", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786941467105_images_11.jpg" },
+            { id: 7, name: "Pó Compacto", price: 10.00, desc: "Marca: Pink21", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786941636382_images_13.jpg" },
+            { id: 6, name: "Base Líquida", price: 10.00, desc: "Marca: Max Love", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786937732952_base-liquida-max-love-oil-free--1-.jpg" },
+            { id: 8, name: "Pó Solto", price: 10.00, desc: "Marca: Labranche", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786941809696_images_14.jpg" },
+            { id: 9, name: "Máscara de Cílios", price: 10.00, desc: "Marca: Labranche", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786939082266_6a-p74cxn3ca0.jpg" },
+            { id: 10, name: "Blusher (Blush)", price: 10.00, desc: "Compacto Vivai / Líquido Bobbi Rara", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786939371792_blush-liquido-frederika-blusher-kisses-5.jpg" },
+            { id: 11, name: "Sombra", price: 10.00, desc: "Marca: Pink21", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786942126522_images_15.jpg" },
+            { id: 12, name: "Iluminador", price: 10.00, desc: "Marca: Mia Maker", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786942439401_images_16.jpg" },
+            { id: 13, name: "Contorno", price: 10.00, desc: "Marca: Labranche", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786942565455_images_17.jpg" },
+            { id: 14, name: "Bruma Fixadora", price: 15.00, desc: "Marca: Lady Beauty", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786942769915_images_18.jpg" },
+            { id: 15, name: "Blindagem", price: 22.00, desc: "Marca: Lady Beauty", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786942896819_sg-11134201-7rdw2-lykzf3t1gnruf5.jpg" },
+            { id: 16, name: "Lip Combo", price: 25.00, desc: "Kit Lip com: Gloss + Batom Matte e Lápis labial Bobbi Rara", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786942997516_kit_bobbi_rara_gloss_lpis_labial_e_batom_matte_c_2_20251125162321_90220280bd03.jpg" },
+            { id: 17, name: "Lápis de Contorno Labial", price: 10.00, desc: "Marca: Pink21", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786943266790_5zrcryysgd8ufqswfhcfgkax2fwzhygf19sf.webp" },
+            { id: 18, name: "Delineador", price: 10.00, desc: "IMAGEM ILUSTRATIVA!! Marcas Disponívris: Mia Maker / Vivai", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786943386413_images_19.jpg" },
+            { id: 19, name: "Lápis de Olho", price: 10.00, desc: "Marca: Febella", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786943593901_7961a7238d2ed12954aad1a13ead1ed5.jpg" },
+            { id: 20, name: "Esponja para Maquiagem", price: 3.00, desc: "Marca: Yooma", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786943659214_images_3.jpg" },
+            { id: 21, name: "Cola para Cílios", price: 14.00, desc: "Marca: Salon Pro", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786943704607_images_4.jpg" },
+            { id: 22, name: "Cílios Postiços", price: 10.00, desc: "Marca: New Show", img: "https://api-cluster.nevermissapps.com/public-blob/img_1786943815236_cilios_em_tufo_new_show_10d_4961_1_556ad7758be43f522fb3c8ef82134c36.jpg" }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="${p.img}" alt="${p.name}">
+                        <span class="price-badge">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h4>${p.name}</h4>
+                            <p>${p.desc}</p>
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="add-btn">Adicionar</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCart(open) {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            if (open) {
+                sidebar.classList.add('open');
+                overlay.classList.add('open');
+            } else {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const inCart = cart.find(item => item.product.id === id);
+            if (inCart) {
+                inCart.quantity++;
+            } else {
+                cart.push({ product, quantity: 1 });
+            }
+  
